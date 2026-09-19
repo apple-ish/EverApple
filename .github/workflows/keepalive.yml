@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: '0 */6 * * *'  # every 6h, chains runs so the bot never sleeps
 
+permissions:
+  contents: read  # GITHUB_TOKEN is read-only — this workflow never needs to write
+
 jobs:
   run-selfbot:
     runs-on: ubuntu-latest
