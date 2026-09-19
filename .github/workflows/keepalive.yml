@@ -1,0 +1,32 @@
+name: EverApple Keepalive
+
+on:
+  workflow_dispatch:  # manual trigger from Actions tab
+  schedule:
+    - cron: '0 */6 * * *'  # every 6h, chains runs so the bot never sleeps
+
+jobs:
+  run-selfbot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350  # ~5.8h, just under GitHub's 6h job cap
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run selfbot
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+          OWNER_ID: ${{ secrets.OWNER_ID }}
+        run: |
+          python main.py
