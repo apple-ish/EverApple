@@ -1,48 +1,81 @@
+<div align="center">
+
 # 🍎 EverApple
 
-A Discord selfbot that keeps your account online 24/7 — controlled entirely from Discord chat itself.
+*keeps your discord status online 24/7 — no pc, no vps, just github*
 
-## Features
+<img src="https://img.shields.io/badge/status-running%2024%2F7-4caf50?style=for-the-badge&logo=githubactions&logoColor=white" alt="status badge"/>
+<img src="https://img.shields.io/badge/python-3.11%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="python badge"/>
+<img src="https://img.shields.io/badge/license-MIT-red?style=for-the-badge" alt="license badge"/>
 
-- **`a.on`** — set status to **Online** (persisted forever, auto-restored on reconnect)
-- **`a.off`** — set status to **Invisible** (appears offline)
-- **`a.idle`** — set status to **Idle**
-- **`a.dnd`** — set status to **Do Not Disturb**
-- **`a.status`** — check current status
-- **Stealth mode** — every command message is auto-deleted instantly
-- **Owner lock** — only your account can trigger commands (set `OWNER_ID` secret)
-- **Keepalive** — re-asserts your presence every 60s so Discord can't silently drop it
-- **GitHub Actions runner** — runs on GitHub's servers, no VPS or local machine needed
+</div>
 
-## Setup (fork-and-run)
+---
 
-1. **Fork this repo** (or use it directly if you own it)
-2. Go to **Settings → Secrets and variables → Actions**
-3. Add two secrets:
-   - `DISCORD_TOKEN` — your Discord user token ([how to get it](https://www.zenrows.com/blog/how-to-get-discord-token))
-   - `OWNER_ID` — your Discord user ID (enable Developer Mode → right-click your name → Copy ID)
-4. Go to **Actions** tab → click **"I understand my workflows, go ahead and enable them"** if prompted
-5. Select **EverApple Keepalive** → **Run workflow**
-6. Done — the selfbot logs in and keeps your account online 24/7
+> [!WARNING]
+> this is a **selfbot** — it automates your discord **user account**, which
+> violates the [discord terms of service](https://discord.com/terms). your
+> account may be warned or suspended. use an account you can afford to lose.
 
-## Status Persistence
+---
 
-Once you set a status with `a.on`, `a.off`, `a.idle`, or `a.dnd`, it stays until you change it with another command — even across:
-- GitHub Actions runner restarts
-- Discord reconnects
-- Workflow re-runs every 6 hours
+## ✨ what it does
 
-The status persists because the selfbot re-asserts it every 60 seconds while running.
+| command | effect |
+|:---:|---|
+| `a.on` | 🟢 status → **online** (stays forever) |
+| `a.off` | 👻 status → **invisible** |
+| `a.idle` | 🌙 status → **idle** |
+| `a.dnd` | ⛔ status → **do not disturb** |
+| `a.status` | 📊 check current status |
 
-## Requirements
+- 🕵️ **stealth** — every command message self-destructs instantly
+- 🔒 **owner lock** — only your account can trigger commands (`OWNER_ID` secret)
+- 💓 **keepalive** — re-asserts presence every 60s so discord can't drop it
+- 🔄 **persistence** — survives reconnects, runner restarts, and workflow re-runs
 
-- Python 3.11+
-- `discord.py-self` (installed automatically from `requirements.txt`)
+## 🍏 setup (fork & run)
 
-## ⚠️ Disclaimer
+<div align="center">
 
-Selfbots violate Discord's Terms of Service. Use at your own risk — your account may be suspended or banned. This project is for educational purposes only.
+*fork → secrets → enable actions → run. that's it.*
 
-## License
+</div>
+
+**1.** fork this repo
+
+**2.** go to **settings → secrets and variables → actions** and add:
+
+| secret | required | what it is |
+|---|:---:|---|
+| `DISCORD_TOKEN` | ✅ | your discord user token |
+| `OWNER_ID` | recommended | your discord user id (developer mode → right-click name → copy id) |
+
+**3.** open the **actions** tab → enable workflows if prompted
+
+**4.** select **everapple keepalive** → **run workflow**
+
+<div align="center">
+
+🍎 *that's it — your status is now set and kept, forever*
+
+</div>
+
+## 🧺 how persistence works
+
+once you set a status, the selfbot re-asserts it every 60 seconds while running.
+the workflow re-launches every 6 hours, and on every fresh start the bot restores
+the last status it was told to hold — so your choice survives restarts until you
+change it with another command.
+
+## 🍎 license
 
 MIT
+
+---
+
+<div align="center">
+
+*made with 🍎 by apple-ish*
+
+</div>
